@@ -46,8 +46,8 @@ fun! s:RgGetVisualSelection()
 endfun
 
 fun! s:RgSearchTerm(txt)
-  if empty(a:txt)
-    return expand("<cword>")
+  if empty(substitute(a:txt, '\s*-\w\+', '', 'g'))
+    return expand("<cword>") . ' ' . a:txt
   else
     return a:txt
   endif
